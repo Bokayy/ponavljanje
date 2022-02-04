@@ -1,24 +1,19 @@
 const attempts = document.querySelector(".score");
 const highscore = document.querySelector(".highscore");
-
 let toGuess = getRandomInt(1,20);
-
 const input = document.querySelector(".guess")
 let inputNum = input.valueAsNumber;
 
-let playerWon = false;
 const resetBtn = document.querySelector(".again");
 const winQuery = document.querySelector(".check");
 const winState = document.querySelector(".message");
-/* console.log(winStateText); */
+
+// functions ////////////////////////////////////////////
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function checkWin(input, question) {
-    return (input == question) ? true : false;
 }
 
 function Winner(){
@@ -27,10 +22,19 @@ function Winner(){
     document.body.style.backgroundColor = "green";
     highscore.innerHTML = attempts.innerHTML;
     document.querySelector(".number").innerHTML = toGuess;
+    document.querySelector(".number").style.width = "20rem";
 }
 
+function check() {
+    if (inputNum == toGuess){
+        Winner();
+    }
+    else{
+        attempts.innerHTML--;
+    }
+}
 
-// //////////////////////////////////////////////////////////
+// main code //////////////////////////////////////////////////////
 
 console.log(toGuess);
 
@@ -42,20 +46,25 @@ resetBtn.addEventListener("click",function(){
     document.querySelector("main").style.backgroundColor = "#222";
     document.body.style.backgroundColor = "#222";
     document.querySelector(".number").innerHTML = "?";
+    document.querySelector(".number").style.width = "15rem";
 });
 
+//code necessary for the input field to work properly
 input.addEventListener("keyup",function(){
     inputNum = input.valueAsNumber;
 })
 
+input.addEventListener("keypress", function(e)
+{
+    if (e.key === 'Enter')
+    {
+        check();
+    } 
+});
+
 //Check if you successfully guessed the number
 winQuery.addEventListener("click", function(){
-    if (inputNum == toGuess){
-        Winner();
-    }
-    else{
-        attempts.innerHTML--;
-    }
+    check();
 });
 
 

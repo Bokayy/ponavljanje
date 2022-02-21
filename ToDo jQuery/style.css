@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(
+        from -90deg at bottom center,
+        papayawhip,
+        peachpuff);
+}
+
+.container{
+    height: 30rem;
+    width: 30rem;
+    background: conic-gradient(at 0% 0%, snow, white);
+    border-radius:5px;
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#input{
+    width: 100%;
+    outline: none;
+    border: none;
+    background: #666;
+    color: #fff;
+    height: 3rem;
+    border-radius:5px;
+    padding: 0 10px;
+    margin: 1rem 0;
+}
+
+#input::placeholder{
+    color: #fff;
+}
+
+ul li {
+    list-style: none;
+    background: conic-gradient(
+        from .5turn at top right,
+        darkseagreen,
+        darkslategray
+        );
+        color: #eee;
+        margin: 10px 0;
+        padding: 10px 5px;
+        border-radius: 5px;
+        position: relative;
+}
+
+ul .fa-check, .fa-trash{
+    position: absolute;
+    cursor: pointer;
+}
+
+ul .fa-trash{
+    right:15px ;
+    color: black;
+}
+
+ul .fa-check{
+    right: 40px;
+}
+
+.checked{
+    text-decoration: line-through;
+    background-color: lightgreen;
+}
